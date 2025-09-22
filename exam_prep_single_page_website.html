@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ExamPrep — Study Hub | परीक्षा तैयारी</title>
+  <style>
+    :root{--bg:#ffffff;--text:#111;--card:#f7f7f8;--accent:#0b63d6}
+    [data-theme="dark"]{--bg:#0b0d10;--text:#e6eef8;--card:#121418;--accent:#58a6ff}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.45}
+    header{background:linear-gradient(90deg,var(--card),transparent);padding:18px 24px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:48px;height:48px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700} 
+    nav a{margin:0 8px;text-decoration:none;color:var(--text);font-weight:600}
+    .container{max-width:1100px;margin:22px auto;padding:0 18px}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:20px}
+    .card{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.04)}
+    h1,h2{margin:6px 0}
+    .subjects{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    .subject{padding:10px 12px;border-radius:10px;background:rgba(0,0,0,0.04);cursor:pointer}
+    .quick-links{display:flex;flex-direction:column;gap:8px}
+    .btn{display:inline-block;padding:8px 12px;border-radius:8px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700}
+    .list{margin:10px 0;padding:0;list-style:none}
+    .list li{padding:6px 0;border-bottom:1px dashed rgba(0,0,0,0.06)}
+    footer{padding:20px;text-align:center;color:rgba(0,0,0,0.6)}
+    @media(max-width:900px){.grid{grid-template-columns:1fr}.brand .hide-sm{display:none}}
+    .small{font-size:13px;color:rgba(0,0,0,0.6)}
+    .toggle{cursor:pointer;padding:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.06);display:inline-flex;align-items:center}
+    .progress-list{display:flex;flex-direction:column;gap:8px}
+    .progress-item{display:flex;justify-content:space-between;align-items:center}
+    .mock-timer{display:flex;gap:8px;align-items:center}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">EP</div>
+      <div>
+        <div style="font-weight:800">ExamPrep — Study Hub</div>
+        <div class="small hide-sm">परीक्षा तैयारी • Notes • Quizzes</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:12px;align-items:center">
+      <div class="toggle" id="themeToggle">🌓</div>
+      <a class="btn" id="bookmarkPage">Bookmark</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <section>
+        <article class="card">
+          <h1>Homepage (होमपेज)</h1>
+          <p><strong>Purpose:</strong> A compact study hub for exam preparation — concise notes, topic-wise explanations, practice MCQs, mock tests with timer, and progress tracking. <span class="small">(परीक्षा तैयारी, नोट्स, क्विज़)</span></p>
+
+          <h2>Featured Subjects (मुख्य विषय)</h2>
+          <div class="subjects" id="subjects">
+            <div class="subject">General Hindi — सामान्य हिंदी</div>
+            <div class="subject">General English — सामान्य अंग्रेज़ी</div>
+            <div class="subject">Rajasthani Culture — राजस्थानी संस्कृति</div>
+            <div class="subject">General Knowledge — सामान्य ज्ञान</div>
+            <div class="subject">Logical Reasoning — तार्किक तर्कशक्ति</div>
+            <div class="subject">Numerical Ability — संख्यात्मक योग्यता</div>
+          </div>
+
+          <h2 style="margin-top:18px">Quick Links to Study Material</h2>
+          <div class="quick-links">
+            <a href="#study" class="small">➤ Notes (PDF + Online View)</a>
+            <a href="#practice" class="small">➤ Practice Zone: MCQs & Mock Tests</a>
+            <a href="#plan" class="small">➤ Daily Study Plan</a>
+            <a href="#resources" class="small">➤ Resources & Downloads</a>
+          </div>
+        </article>
+
+        <article id="study" class="card" style="margin-top:16px">
+          <h2>Study Material (अध्ययन सामग्री)</h2>
+          <ul class="list">
+            <li>General Hindi: <a href="https://www.youtube.com/@StudyIQEducation" target="_blank">Study IQ Education (Hindi)</a></li>
+            <li>General English: <a href="https://www.youtube.com/@EnglishwithLucy" target="_blank">English with Lucy</a></li>
+            <li>Rajasthani Culture: <a href="https://www.youtube.com/@Rajasthanology" target="_blank">Rajasthanology</a></li>
+            <li>General Knowledge: <a href="https://www.youtube.com/@adda247" target="_blank">Adda247</a></li>
+            <li>Logical Reasoning: <a href="https://www.youtube.com/@wifistudy" target="_blank">Wifistudy (Reasoning)</a></li>
+            <li>Numerical Ability: <a href="https://www.youtube.com/@khanacademy" target="_blank">Khan Academy</a></li>
+          </ul>
+        </article>
+
+      </section>
+
+      <aside>
+        <div class="card">
+          <h3>Quick Tools</h3>
+          <p class="small">Dark/Light mode, Bookmark, Personalized dashboard (local)</p>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <footer>
+    © ExamPrep — Study Hub • Built for quick upload to hosting or embedding in Google Sites.
+  </footer>
+
+  <script>
+    const root = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    const storedTheme = localStorage.getItem('exam_theme');
+    if(storedTheme === 'dark') document.documentElement.setAttribute('data-theme','dark');
+    themeToggle.addEventListener('click',()=>{
+      const cur = document.documentElement.getAttribute('data-theme');
+      if(cur === 'dark'){
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('exam_theme','light');
+      } else {
+        document.documentElement.setAttribute('data-theme','dark');
+        localStorage.setItem('exam_theme','dark');
+      }
+    });
+
+    document.getElementById('bookmarkPage').addEventListener('click',()=>{
+      const key = 'exam_bookmarks';
+      const v = JSON.parse(localStorage.getItem(key)||'[]');
+      v.push({title:document.title,url:location.href,at:new Date().toISOString()});
+      localStorage.setItem(key,JSON.stringify(v));
+      alert('Saved to bookmarks (local).');
+    });
+  </script>
+</body>
+</html>
