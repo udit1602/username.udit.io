@@ -33,14 +33,25 @@
   </style>
 </head>
 <body>
-  <div style="background:#fffae6;color:#111;padding:10px;text-align:center;font-weight:bold;">
-     ⚠️ Disclaimer: All study material is for educational purposes only. Please verify with official sources.
-  </div>
+  <!-- Dismissable Disclaimer -->
+<div id="disclaimer" style="background:#fffae6;color:#111;padding:10px;text-align:center;font-weight:bold;position:relative;">
+  ⚠️ Disclaimer: All study material is for educational purposes only. Please verify with official sources.
+  <span style="position:absolute;right:10px;cursor:pointer;font-weight:bold;" onclick="document.getElementById('disclaimer').style.display='none'">✖</span>
+</div>
 
-   <!-- Quick Tools -->
-  <div style="background:#f0f4f8;color:#111;padding:12px;margin:10px auto;border-radius:8px;max-width:1100px;text-align:center;font-weight:600;">
-    ⚡ Quick Tools: Dark/Light mode, Bookmark, Personalized dashboard (local)
-  </div>
+<!-- Interactive Quick Tools -->
+<div style="background:#f0f4f8;color:#111;padding:12px;margin:10px auto;border-radius:8px;max-width:1100px;text-align:center;font-weight:600;display:flex;justify-content:center;gap:12px;flex-wrap:wrap;">
+  <button onclick="themeToggle.click()" style="padding:6px 10px;border-radius:6px;border:none;background:#0b63d6;color:#fff;cursor:pointer;">🌓 Dark/Light Mode</button>
+  <button onclick="bookmarkPage.click()" style="padding:6px 10px;border-radius:6px;border:none;background:#0b63d6;color:#fff;cursor:pointer;">🔖 Bookmark Page</button>
+  <button onclick="showProgress()" style="padding:6px 10px;border-radius:6px;border:none;background:#0b63d6;color:#fff;cursor:pointer;">📊 Progress Tracker</button>
+</div>
+
+<!-- Hidden Progress Tracker Modal -->
+<div id="progressModal" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;padding:20px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.3);z-index:999;">
+  <h3>Study Progress</h3>
+  <ul id="progressList" style="list-style:none;padding:0;"></ul>
+  <button onclick="document.getElementById('progressModal').style.display='none'" style="margin-top:12px;padding:6px 12px;border-radius:6px;background:#0b63d6;color:#fff;border:none;cursor:pointer;">Close</button>
+</div>
   
   <header>
     <div class="brand">
@@ -133,6 +144,30 @@
       localStorage.setItem(key,JSON.stringify(v));
       alert('Saved to bookmarks (local).');
     });
+    const subjects = ['General Hindi', 'General English', 'Rajasthani Culture', 'General Knowledge', 'Logical Reasoning', 'Numerical Ability'];
+  function showProgress(){
+    const modal = document.getElementById('progressModal');
+    const list = document.getElementById('progressList');
+    list.innerHTML = '';
+    let completed = JSON.parse(localStorage.getItem('exam_progress') || '{}');
+    subjects.forEach(sub => {
+      let status = completed[sub] ? '✅ Completed' : '❌ Not Done';
+      let li = document.createElement('li');
+      li.textContent = `${sub}: ${status}`;
+      li.style.padding = '6px 0';
+      list.appendChild(li);
+    });
+    modal.style.display = 'block';
+  }
+
+  document.querySelectorAll('.subject').forEach(el => {
+    el.addEventListener('click', () => {
+      let completed = JSON.parse(localStorage.getItem('exam_progress') || '{}');
+      completed[el.textContent.split(' — ')[0]] = true;
+      localStorage.setItem('exam_progress', JSON.stringify(completed));
+      alert(`${el.textContent.split(' — ')[0]} marked as completed!`);
+    });
+  });
   </script>
 </body>
 </html>
